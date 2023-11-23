@@ -108,14 +108,13 @@ const updateUser = async (req, res) => {
     try {
 
         const { id } = req.params;
-        const userData = req.body
-        const { name, email, } = userData;
+        const { name, email } = req.body;
 
         const user = await UserServices.findOneUser(id);
 
         if (!user) {
             return res.status(404).json({
-                message: `User with id ${id} not found`
+                message: `User with id ${id} not found 😢`
             })
         }
 
@@ -149,7 +148,7 @@ const removeUser = async (req, res) => {
 
         if (!user) {
             return res.status(404).json({
-                message: `User with ${id} not found`
+                message: `User with ${id} not found 😢`
             })
         }
 
@@ -161,7 +160,9 @@ const removeUser = async (req, res) => {
         })
 
     } catch (error) {
+
         console.error('Error:', error);
+
         return res.status(500).json({
             status: 'Fail',
             message: 'Something went wrong!😭',

@@ -12,20 +12,20 @@ const createRepair = async (req, res) => {
         if (!user) {
             return res.status(404).json({
                 status: 'Fail',
-                message: `User with id ${user.id} not found 😢!`
+                message: `User with id ${userId} not found 😢!`
             });
         }
 
         if (user.status === 'disable') {
             return res.status(409).json({
                 status: 'Fail',
-                message: `User with id ${user.id} disable😖`
+                message: `User with id ${userId} disable 😖`
             });
         }
 
         const newRepair = await RepairService.createRepair({
             date,
-            userId: user.id
+            userId
         });
 
         return res.status(201).json({
@@ -151,8 +151,6 @@ const removeRepair = async (req, res) => {
         const { id } = req.params;
 
         const repair = await RepairService.findOneRepairByStatus(id);
-
-        console.log(repair);
 
         if (!repair) {
             return res.status(404).json({
