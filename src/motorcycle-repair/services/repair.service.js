@@ -24,6 +24,10 @@ class RepairService {
         });
     }
 
+    static async findOneRepairByStatus(id) {
+        return await RepairModel.findByPk(id);
+    }
+
     static async updateRepair(repair) {
         return await repair.update({
             status: 'completed'

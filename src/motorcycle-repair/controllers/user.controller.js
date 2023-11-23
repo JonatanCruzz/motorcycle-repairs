@@ -81,7 +81,7 @@ const findOneUser = async (req, res) => {
 
         if (!user) {
             return res.status(404).json({
-                message: `User with ${id} not found`
+                message: `User with ${id} not found 😢`
             })
         }
 

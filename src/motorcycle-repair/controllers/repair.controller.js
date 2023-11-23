@@ -5,14 +5,14 @@ const UserService = require('../services/user.service');
 const createRepair = async (req, res) => {
     try {
 
-        const  { date, userId } = req.body;
+        const { date, userId } = req.body;
 
         const user = await UserService.findOneUser(userId);
 
         if (!user) {
             return res.status(404).json({
                 status: 'Fail',
-                message: 'User not found 😢!'
+                message: `User with id ${user.id} not found 😢!`
             });
         }
 
@@ -88,7 +88,7 @@ const findOneRepair = async (req, res) => {
         if (!repair) {
             return res.status(404).json({
                 status: 'Fail',
-                message: `Repair with ${id} not found!😢`
+                message: `Repair with id ${id} not found!😢`
             });
         }
 
@@ -120,7 +120,7 @@ const updateRepair = async (req, res) => {
         if (!repair) {
             return res.status(404).json({
                 status: 'Fail',
-                message: `Repair with ${id} not found!😢`
+                message: `Repair with id ${id} not found!😢`
             });
         }
 
@@ -150,7 +150,9 @@ const removeRepair = async (req, res) => {
     try {
         const { id } = req.params;
 
-        const repair = await RepairService.findOneRepair(id);
+        const repair = await RepairService.findOneRepairByStatus(id);
+
+        console.log(repair);
 
         if (!repair) {
             return res.status(404).json({
