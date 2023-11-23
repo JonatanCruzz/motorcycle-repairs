@@ -26,7 +26,7 @@ class UserService {
 
     static async deleteUser(user) {
         return await user.update({
-            status: 'unavailable'
+            status: 'disable'
         });
     };
 };

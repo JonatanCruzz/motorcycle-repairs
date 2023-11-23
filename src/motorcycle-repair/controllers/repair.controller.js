@@ -12,14 +12,14 @@ const createRepair = async (req, res) => {
         if (!user) {
             return res.status(404).json({
                 status: 'Fail',
-                message: 'User not found!😢'
+                message: 'User not found 😢!'
             });
         }
 
-        if (user.status === 'unavailable') {
+        if (user.status === 'disable') {
             return res.status(409).json({
                 status: 'Fail',
-                message: `User with id ${user.id} unavailable😢`
+                message: `User with id ${user.id} disable😖`
             });
         }
 
@@ -162,7 +162,7 @@ const removeRepair = async (req, res) => {
         if (repair.status === 'completed') {
             return res.status(409).json({
                 status: 'Fail',
-                message: 'Repair already completed!😢'
+                message: 'Repair already completed!😇'
             });
         }
 

@@ -9,8 +9,7 @@ const Repairs = sequelize.define('Repairs', {
     },
     date: {
         type: DataTypes.DATE,
-        allowNull: false,
-        defaultValue: DataTypes.NOW
+        allowNull: false
     },
     status: {
         type: DataTypes.ENUM('pending', 'completed', 'cancelled'),
