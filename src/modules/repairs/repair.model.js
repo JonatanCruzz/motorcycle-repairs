@@ -1,5 +1,5 @@
-const { DataTypes } = require('sequelize');
-const { sequelize } = require('../../config/database/database');
+import { DataTypes } from 'sequelize';
+import { sequelize } from '../../config/database/database.js';
 
 const Repairs = sequelize.define('Repairs', {
     id: {
@@ -9,6 +9,14 @@ const Repairs = sequelize.define('Repairs', {
     },
     date: {
         type: DataTypes.DATE,
+        allowNull: false
+    },
+    motorsNumber: {
+        type: DataTypes.INTEGER,
+        allowNull: false
+    },
+    description: {
+        type: DataTypes.TEXT,
         allowNull: false
     },
     status: {
@@ -22,4 +30,4 @@ const Repairs = sequelize.define('Repairs', {
     }
 });
 
-module.exports = Repairs;
+export default Repairs;

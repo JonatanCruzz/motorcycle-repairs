@@ -1,7 +1,7 @@
-const { Sequelize } = require('sequelize');
-const { envs } = require('../enviroment/enviroment');
+import { Sequelize } from 'sequelize';
+import { envs } from '../enviroment/enviroment.js';
 
-const sequelize = new Sequelize(envs.DB_URI, {
+export const sequelize = new Sequelize(envs.DB_URI, {
     logging: false,
     dialectOptions: {
         ssl: {
@@ -11,7 +11,7 @@ const sequelize = new Sequelize(envs.DB_URI, {
     }
 });
 
-const authenticate = async () => {
+export const authenticate = async () => {
     try {
 
         await sequelize.authenticate();
@@ -22,9 +22,9 @@ const authenticate = async () => {
         console.error('❌ Unable to connect to the database:', error.message);
 
     }
-}
+};
 
-const syncUp = async () => {
+export const syncUp = async () => {
     try {
 
         await sequelize.sync();
@@ -35,10 +35,4 @@ const syncUp = async () => {
         console.error('❌ Unable to synchronize the models:', error.message);
 
     }
-}
-
-module.exports = {
-    sequelize,
-    authenticate,
-    syncUp
-}
+};

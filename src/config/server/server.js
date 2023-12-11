@@ -1,8 +1,8 @@
-const app = require('../../app');
-const { authenticate, syncUp } = require('../database/database');
-const { envs } = require('../enviroment/enviroment');
+import app from '../../app.js';
+import { authenticate, syncUp } from '../database/database.js';
+import { envs } from '../enviroment/enviroment.js';
 
-async function main() {
+export async function main() {
     try {
 
         await authenticate();

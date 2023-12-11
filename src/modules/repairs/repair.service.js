@@ -1,5 +1,4 @@
-const { where } = require('sequelize');
-const RepairModel = require('../models/repair.model');
+import RepairModel from './repair.model.js';
 
 class RepairService {
 
@@ -41,4 +40,4 @@ class RepairService {
     };
 };
 
-module.exports = RepairService;
+export default RepairService;

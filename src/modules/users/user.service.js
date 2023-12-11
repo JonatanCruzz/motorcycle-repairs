@@ -1,13 +1,15 @@
-const UserModel = require('../models/user.model');
+import UserModel from './user.model.js';
 
 class UserService {
 
-    static async createUser(data) {
+    static async register(data) {
         return await UserModel.create(data);
     }
 
     static async findAllUsers() {
-        return await UserModel.findAll();
+        return await UserModel.findAll({
+            attributes: { exclude: ['password'] }
+        });
     }
 
     static async findOneUser(id) {
@@ -31,4 +33,4 @@ class UserService {
     };
 };
 
-module.exports = UserService;
+export default UserService;
